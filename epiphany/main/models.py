@@ -5,6 +5,7 @@ from PIL import Image
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
+    video = models.FileField(upload_to='videos/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)

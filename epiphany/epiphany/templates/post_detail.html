@@ -21,10 +21,17 @@
     </header>
     <main>
         <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
         {% if post.image %}
             <img src="{{ post.image.url }}" alt="{{ post.title }}" height="300px" width="500px">
         {% endif %}
-        <p>{{ post.content }}</p>
+        
+        {% if post.video %}
+            <video width="320" height="240" controls>
+                <source src="{{ post.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {% endif %}
         <p><small>Posted by {{ post.author.username }} on {{ post.created_at }}</small></p>
         {% if user == post.author %}
         <form action="{% url 'delete_post' post.id %}" method="POST" style="display:inline;">

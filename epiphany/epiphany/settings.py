@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-p*s2%zytoj-7oq2r^(u8ba3nb02r4&9(z%i*!6uf6f60bepl(7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-epiphany.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -77,14 +77,7 @@ WSGI_APPLICATION = 'epiphany.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_epiphany',
-        'USER': 'khushi11',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 
